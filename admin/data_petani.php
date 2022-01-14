@@ -129,7 +129,7 @@ $get_data = mysqli_query($conn, "SELECT * FROM petani");
                                     </td>                            
                                 </tr>
                             <?php } ?>                                       
-                        </tbody>
+                        </tbody> 
                         <tfoot>
                         </tfoot>
                     </table>
