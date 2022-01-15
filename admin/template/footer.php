@@ -42,9 +42,11 @@
         <script src="plugins/datatables/buttons.print.min.js"></script>
         <!-- Responsive examples -->
         <script src="plugins/datatables/dataTables.responsive.min.js"></script>
-        <script src="plugins/datatables/responsive.bootstrap4.min.js"></script>
-        
+        <script src="plugins/datatables/responsive.bootstrap4.min.js"></script>       
         <script src="plugins/sweet-alert/sweetalert2.min.js"></script>
+        <script src="plugins/select2/js/select2.min.js"></script>
+
+
 
         <!-- App js -->
         <script src="assets/js/jquery.core.js"></script>
@@ -52,6 +54,8 @@
 
         <script>
             $(document).ready(function() {
+                $('.select2').select2();
+
                 $('#mainTable').DataTable();
                 $('#mainTableButton').DataTable({
                     dom: 'Bfrtip',

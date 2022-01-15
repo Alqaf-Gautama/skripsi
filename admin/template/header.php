@@ -27,6 +27,7 @@ $adm = mysqli_fetch_assoc($admin);
         <link href="plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
         <link href="plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        <link href="plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />

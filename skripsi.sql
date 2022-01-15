@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jan 2022 pada 17.19
+-- Waktu pembuatan: 15 Jan 2022 pada 11.03
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.10
 
@@ -117,9 +117,7 @@ INSERT INTO `kelompok` (`id`, `nama_kelompok`, `jumlah_anggota`, `ket`) VALUES
 CREATE TABLE `permintaan` (
   `id` int(11) NOT NULL,
   `tgl_permintaan` date NOT NULL,
-  `pupuk_id` int(11) NOT NULL,
-  `petani_id` int(11) NOT NULL,
-  `jatah` int(11) NOT NULL
+  `petani_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

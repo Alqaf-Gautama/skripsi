@@ -1,5 +1,8 @@
 <?php 
 require('template/header.php');
+
+$get_petani = mysqli_query($conn, "SELECT * FROM petani");
+
 ?> 
 <div class="container-fluid">
 
@@ -11,7 +14,7 @@ require('template/header.php');
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                     <li class="breadcrumb-item active">Permintaan</li>
-                   
+
                 </ol>
 
 
@@ -33,17 +36,20 @@ require('template/header.php');
                                         <div class="col-md-8">
                                             <select class="input-sm form-control select2" name="find_code">
                                                 <option value="">Temukan NIK</option>
+                                                <?php foreach ($get_petani as $ptn) { ?>
+                                                    <option value="<?= $ptn['id'] ?>"><?= $ptn['nik'].'/'.$ptn['nama'] ?></option>
+                                                <?php } ?>
                                             </select>
                                         </div>
                                         <div class="col-md-3">
-                                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> &nbsp;Temukan</button>
+                                            <button type="button" class="btn btn-primary"><i class="fa fa-search"></i> &nbsp;Temukan</button>
                                         </div>
                                     </div>
                                 </form>
                                 <hr>
                                 <div style="margin-top: -10px;">
                                     <ul class="list-group list-group-flush">
-                                     <li class="list-group-item row">
+                                       <li class="list-group-item row">
                                         <b class="col-sm-5 p-0">Tanggal Penebusan</b>
                                         <span class="col-sm-7 p-0">
                                             : <?= date("d/m/Y") ?>                                    </span>
