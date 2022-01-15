@@ -6,7 +6,7 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Informasi Distribusi Pupuk Mega Reski Karya Buana Tani</title>
+    <title>Informasi Distribusi Pupuk Mega Karya Buana Tani</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -32,7 +32,7 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
 	  
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Megakarya<span>Tani</span></a>
+	      <a class="navbar-brand" >Megakarya<span>Tani</span></a>
 	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -60,8 +60,8 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
 		          <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 		          	<div class="text">
 		          		<span class="subheading">Selamat Datang Di</span>
-			            <h1 class="mb-4 mt-3">Web Informasi Distribusi Pupuk <span>PT. Mega Reski Buana Tani</span></h1>
-			            <p>Website ini berisi informasi data petani dan pupuk pada PT. mega reski buana tani</p>
+			            <h1 class="mb-4 mt-3">Web Informasi Distribusi Pupuk <span>PT. Mega Karya Buana Tani</span></h1>
+			            <p>Website ini berisi informasi data petani dan pupuk pada PT. mega Karya buana tani</p>
 			            
 			            <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">Cek Jatah Pupuk</a></p>
 		            </div>
@@ -80,8 +80,8 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
 		          <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 		          	<div class="text">
 		          		<span class="subheading">Selamat Datang Di</span>
-                  <h1 class="mb-4 mt-3">Web Informasi Distribusi Pupuk <span>PT. Mega Reski Buana Tani</span></h1>
-                  <p>Website ini berisi informasi data petani dan pupuk pada PT. mega reski buana tani</p>
+                  <h1 class="mb-4 mt-3">Web Informasi Distribusi Pupuk <span>PT. Mega Karya Buana Tani</span></h1>
+                  <p>Website ini berisi informasi data petani dan pupuk pada PT. mega Karya buana tani</p>
                   
                   <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">Cek Jatah Pupuk
                   </a></p>
@@ -231,7 +231,7 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
     				<div class="py-md-5">
 	    				<div class="row justify-content-start pb-3">
 			          <div class="col-md-12 heading-section ftco-animate">
-			            <h2 class="mb-4" style="font-size: 34px; text-transform: capitalize;">PT. MEGA RESKI KARYA BUANA TANI</h2>
+			            <h2 class="mb-4" style="font-size: 34px; text-transform: capitalize;">PT. MEGA KARYA BUANA TANI</h2>
 			            <p class="text-justify">PT Mega Karya Buana Tani merupakan salah satu perusahaan yang bergerak dalam bidang Distribusi berbagai jenis pupuk. PT Mega Karya Buana Tani yang beralamat di jalan trans sulawesi kelurahan tomoni, kecamtan tomoni kab luwu timur. Dalam sistem pengumpulan data transaksi distribusi penyaluran pupuk yang selama ini digunakan oleh PT Mega Karya Buana Tani adalah masih dengan cara manual yaitu dalam penginputan transaksi penjualan dan pembelian masih mengandalkan sebuah buku yang berisi RDKK (Rencana Definitif Kebutuhan Kelompok Tani) untuk di isi data transaksi distribusi pupuk.</p> 
                   <p class="text-justify">RDKK merupakan merupakan rencana kebutuhan pupuk bersubsidi untuk satu tahun yang disusun berdasarkan musyawarah anggota kelompok tani yang merupakan alat pesanan pupuk bersubsidi kepada gabungan kelompok tani atau penyalur sarana produksi pertanian. </p>
 			          </div>

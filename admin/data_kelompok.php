@@ -1,4 +1,4 @@
-<?php
+    <?php
 require('template/header.php');
 
 // Tambah Data
