@@ -31,7 +31,7 @@ $get_permintaan = mysqli_query($conn, "SELECT * FROM permintaan");
                     <table id="mainTable" class="table table-striped m-b-0">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th width="10">No</th>
                                 <th>NIK</th>
                                 <th>Nama</th>
                                 <th>Jenis Pupuk</th>
