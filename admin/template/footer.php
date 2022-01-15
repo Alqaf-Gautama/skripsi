@@ -1,7 +1,7 @@
 </div> <!-- content -->
 
 <footer class="footer text-right">
-    2017 - 2018 © Abstack. - Coderthemes.com
+   Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | PT. Mega Karya Buana Tani by <a>Borpal Studio</a>
 </footer>
 
 </div>
