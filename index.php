@@ -56,7 +56,7 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
         <div class="overlay"></div>
         <div class="container-fluid p-0">
           <div class="row d-md-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
-            <div class="one-third order-md-last img js-fullheight" style="background-image:url(images/bg_1.jpg);">
+            <div class="one-third order-md-last img js-fullheight" style="background-image:url(images/pupuk.jpg);">
               <div class="overlay"></div>
             </div>
             <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
@@ -76,7 +76,7 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
         <div class="overlay"></div>
         <div class="container-fluid p-0">
           <div class="row d-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
-            <div class="one-third order-md-last img js-fullheight" style="background-image:url(images/bg_2.jpg);">
+            <div class="one-third order-md-last img js-fullheight" style="background-image:url(images/pupuk_kaltim.jpg);">
               <div class="overlay"></div>
             </div>
             <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">

@@ -41,18 +41,7 @@ require('template/header.php');
                             </tr>
                         </thead>
                         <tbody>
-                           <tr>
-                               <td>1</td>
-                               <td>alqaf</td>
-                               <td>123345346</td>
-                               <td>21/12/2021</td>
-                               <td>0</td>
-                               <td>0</td>
-                               <td>100</td>
-                               <td>0</td>
-                               <td>250</td>
-                               <td>120</td>
-                           </tr>
+
                         </tbody>
                         <tfoot>
                           <tr>
