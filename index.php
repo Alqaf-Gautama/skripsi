@@ -224,7 +224,7 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
     <div class="container">
       <div class="row d-flex">
         <div class="col-md-6 col-lg-5 d-flex">
-          <div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/about.jpg);">
+          <div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/harga-pupuk.jpg);">
           </div>
         </div>
         <div class="col-md-6 col-lg-7 pl-lg-5 py-5">
