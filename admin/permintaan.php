@@ -80,8 +80,14 @@ if (isset($_POST['proses'])) {
                                         </ul>
                                     </div>
                                     <hr>
-                                    <div class="text-center">
-                                        <button type="submit" name="proses" class="btn btn-info btn-lg btn-block"><i class="fa fa-check"></i> Proses</button>
+                                    <div class="text-center row">
+                                        <div class="col-6">
+                                            <button type="button" class="btn btn-primary btn-lg btn-block reset-form"><i class="fa fa-undo"></i> Restar</button>
+
+                                        </div>
+                                        <div class="col-6">
+                                            <button type="submit" name="proses" class="btn btn-info btn-lg btn-block"><i class="fa fa-check"></i> Proses</button>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -129,6 +135,16 @@ require('template/footer.php');
                     });
                 }
             });
+        });
+
+        $('.reset-form').click(function(e) {
+            e.preventDefault();
+
+            $('.select2').val('');
+            $('.select2').select2({
+                placeholder: 'Temukan NIK Petani',
+            });
+            $('.dtl').html('--');
         });
 
         <?php if ($response == 'success_add') { ?>
