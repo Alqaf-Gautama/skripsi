@@ -32,7 +32,7 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
 
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target scrolled awake" id="ftco-navbar">
     <div class="container">
       <a class="navbar-brand">Megakarya<span>Tani</span></a>
       <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,7 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
                 <h1 class="mb-4 mt-3">Web Informasi Distribusi Pupuk <span>PT. Mega Karya Buana Tani</span></h1>
                 <p>Website ini berisi informasi data petani dan pupuk pada PT. mega Karya buana tani</p>
 
-                <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">Cek Jatah Pupuk</a></p>
+                <p><a href="#services-section" class="btn btn-primary px-5 py-3 mt-3">Cek Jatah Pupuk</a></p>
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
                 <h1 class="mb-4 mt-3">Web Informasi Distribusi Pupuk <span>PT. Mega Karya Buana Tani</span></h1>
                 <p>Website ini berisi informasi data petani dan pupuk pada PT. mega Karya buana tani</p>
 
-                <p><a href="#" class="btn btn-primary px-5 py-3 mt-3">Cek Jatah Pupuk
+                <p><a href="#services-section" class="btn btn-primary px-5 py-3 mt-3">Cek Jatah Pupuk
                   </a></p>
               </div>
             </div>
