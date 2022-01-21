@@ -70,15 +70,7 @@ $adm = mysqli_fetch_assoc($admin);
                                 <img src="assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle"> <span class="ml-1"><?= $adm['nama'] ?><i class="mdi mdi-chevron-down"></i> </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                                <!-- item-->
-                                <div class="dropdown-item noti-title">
-                                    <h6 class="text-overflow m-0">Welcome !</h6>
-                                </div>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fi-head"></i> <span>My Account</span>
-                                </a>
+                                
                                 <!-- item-->
                                 <a href="logout.php" class="dropdown-item notify-item">
                                     <i class="fi-power"></i> <span>Logout</span>
