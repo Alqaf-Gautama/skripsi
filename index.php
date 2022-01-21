@@ -220,14 +220,15 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
     </div>
   </section>
 
-  <section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
+  <section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="about-section" style="z-index: 999;">
     <div class="container">
       <div class="row d-flex">
-        <div class="col-md-6 col-lg-5 d-flex">
-          <div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/harga-pupuk.jpg);">
-          </div>
+        <div class="col-md-6 col-lg-6 d-flex">
+          <!-- <div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/harga-pupuk.jpg);">
+          </div> -->
+          <img src="images/harga-pupuk.jpg" alt="" style="width: 100%;">
         </div>
-        <div class="col-md-6 col-lg-7 pl-lg-5 py-5">
+        <div class="col-md-6 col-lg-6 pl-lg-5 py-5">
           <div class="py-md-5">
             <div class="row justify-content-start pb-3">
               <div class="col-md-12 heading-section ftco-animate">
