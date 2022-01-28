@@ -130,9 +130,19 @@ require('template/footer.php');
                         });
                         $('.dtl').html('--');
                     }
-                    $.each(data, function(key, val) {
-                        $('.' + key).html(val);
-                    });
+
+                    if (data.cek_jatah == 0) {
+                        alert('Jatah pupuk untuk petani ini belum di tentukan');
+                        $('.select2').val('');
+                        $('.select2').select2({
+                            placeholder: 'Temukan NIK Petani',
+                        });
+                        $('.dtl').html('--');
+                    } else {
+                        $.each(data, function(key, val) {
+                            $('.' + key).html(val);
+                        });
+                    }
                 }
             });
         });

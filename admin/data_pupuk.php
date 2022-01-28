@@ -1,4 +1,4 @@
-<?php 
+<?php
 require('template/header.php');
 
 $response = null;
@@ -36,7 +36,7 @@ if (isset($_GET['hapus_data'])) {
 }
 
 $get_data = mysqli_query($conn, "SELECT * FROM pupuk");
-?> 
+?>
 <div class="container-fluid">
 
     <div class="row">
@@ -59,7 +59,7 @@ $get_data = mysqli_query($conn, "SELECT * FROM pupuk");
         <div class="col-sm-12">
             <div class="card-box">
                 <h4 class="m-t-0 header-title"><b>DATA PUPUK</b></h4>
-                <button type="button" class="btn btn-gradient btn-rounded waves-light waves-effect w-md mb-2"  data-toggle="modal" data-target="#modaltambah"><i class="fa fa-plus"></i> Tambah Data</button>
+                <button type="button" class="btn btn-gradient btn-rounded waves-light waves-effect w-md mb-2" data-toggle="modal" data-target="#modaltambah"><i class="fa fa-plus"></i> Tambah Data</button>
                 <div class="table-responsive">
                     <table id="mainTable" class="table table-striped m-b-0">
                         <thead>
@@ -71,27 +71,27 @@ $get_data = mysqli_query($conn, "SELECT * FROM pupuk");
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody> 
-                            <?php 
+                        <tbody>
+                            <?php
                             foreach ($get_data as $no => $dta) { ?>
                                 <tr>
-                                    <td><?= $no+1 ?></td>
+                                    <td><?= $no + 1 ?></td>
                                     <td><?= $dta['nama_pupuk'] ?></td>
-                                    <td><?= $dta['stock'] ?></td>
-                                    <td><?= $dta['harga'] ?></td>
-                                    <td width="180"> 
+                                    <td><?= $dta['stock'] ?> (kg)</td>
+                                    <td>Rp.<?= number_format($dta['harga']) ?></td>
+                                    <td width="180">
                                         <button type="button" class="btn btn-success btn-sm btn-rounded waves-light waves-effect" data-toggle="modal" data-target="#modaledit<?= $dta['id'] ?>"><i class="fa fa-edit"></i> Edit</button>
                                         <button type="button" class="btn btn-danger btn-sm btn-rounded waves-light waves-effect" data-toggle="modal" data-target="#modalhapus<?= $dta['id'] ?>"><i class="fa fa-trash"></i> Hapus</button>
                                     </td>
-                                </tr>  
-                            <?php } ?>                     
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    <!-- end row -->               
+    <!-- end row -->
 </div>
 
 <!-- modal tambah -->
@@ -183,7 +183,7 @@ $get_data = mysqli_query($conn, "SELECT * FROM pupuk");
         </div><!-- /.modal-dialog -->
     </div>
 <?php } ?>
-<?php 
+<?php
 require('template/footer.php');
 ?>
 
@@ -195,7 +195,7 @@ require('template/footer.php');
                 title: 'Berhasil Tambah Data',
                 text: 'Data baru berhasil ditambahkan',
                 preConfirm: () => {
-                    window.location.href=window.location.href;
+                    window.location.href = window.location.href;
                 }
             });
         <?php } else if ($response == 'success_edit') { ?>
@@ -204,7 +204,7 @@ require('template/footer.php');
                 title: 'Berhasil Mengupdate Data',
                 text: 'Data telah berhasil di update',
                 preConfirm: () => {
-                    window.location.href=window.location.href;
+                    window.location.href = window.location.href;
                 }
             });
         <?php } else if ($response == 'success_delete') { ?>
@@ -213,7 +213,7 @@ require('template/footer.php');
                 title: 'Berhasil Menghapus Data',
                 text: 'Data telah berhasil di hapus',
                 preConfirm: () => {
-                    window.location.href=window.location.href.split('?')[0];
+                    window.location.href = window.location.href.split('?')[0];
                 }
             });
         <?php } else if ($response == 'error') { ?>
@@ -222,7 +222,7 @@ require('template/footer.php');
                 title: 'Terjadi Kesalahan',
                 text: 'Terjadi kesalahan. Gagal memproses data',
                 preConfirm: () => {
-                    window.location.href=window.location.href;
+                    window.location.href = window.location.href;
                 }
             });
         <?php } ?>

@@ -31,6 +31,7 @@ if (isset($_POST['req'])) {
             $get_jatah = mysqli_query($conn, "SELECT * FROM jatah WHERE petani_id='$petani_id'");
 
             $harga = 0;
+            $cek_jatah = 0;
             $jatah = '<div class="ml-5 pl-5" style="margin-top: -22px">';
             foreach ($get_jatah as $jta) {
                 $pupuk_id = $jta['pupuk_id'];
@@ -39,12 +40,14 @@ if (isset($_POST['req'])) {
                 $jatah .= '- ' . $ppk['nama_pupuk'] . ' (' . $jta['jumlah'] . 'Kg/Liter)<br>';
 
                 $harga = $harga + $ppk['harga'];
+                $cek_jatah++;
             }
             $jatah .= '</div>';
             $data = [
                 'nama' => $ptn['nama'],
                 'nama_kelompok' => $klp['nama_kelompok'],
                 'jatah' => $jatah,
+                'cek_jatah' => $cek_jatah,
                 'total_bayar' => 'Rp' . number_format($harga)
             ];
         }
