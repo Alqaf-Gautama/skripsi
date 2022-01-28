@@ -67,7 +67,7 @@ $get_data = mysqli_query($conn, "SELECT * FROM pupuk");
                                 <th>No</th>
                                 <th>Nama Pupuk</th>
                                 <th>Stock</th>
-                                <th>Harga</th>
+                                <th>Harga/Kg</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -78,7 +78,7 @@ $get_data = mysqli_query($conn, "SELECT * FROM pupuk");
                                     <td><?= $no + 1 ?></td>
                                     <td><?= $dta['nama_pupuk'] ?></td>
                                     <td><?= $dta['stock'] ?> (kg)</td>
-                                    <td>Rp.<?= number_format($dta['harga']) ?></td>
+                                    <td>Rp.<?= number_format($dta['harga']) ?>/Kg</td>
                                     <td width="180">
                                         <button type="button" class="btn btn-success btn-sm btn-rounded waves-light waves-effect" data-toggle="modal" data-target="#modaledit<?= $dta['id'] ?>"><i class="fa fa-edit"></i> Edit</button>
                                         <button type="button" class="btn btn-danger btn-sm btn-rounded waves-light waves-effect" data-toggle="modal" data-target="#modalhapus<?= $dta['id'] ?>"><i class="fa fa-trash"></i> Hapus</button>

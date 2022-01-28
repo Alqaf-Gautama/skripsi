@@ -1,4 +1,4 @@
-<?php 
+<?php
 require('template/header.php');
 
 $response = null;
@@ -7,7 +7,12 @@ if (isset($_POST['tambah_data'])) {
     $pupuk_id = $_POST['pupuk_id'];
     $tanggal_masuk = $_POST['tanggal_masuk'];
     $jumlah_masuk = $_POST['jumlah_masuk'];
-    
+
+    $getppk = mysqli_query($conn, "SELECT * FROM pupuk WHERE id='$pupuk_id'");
+    $ppk = mysqli_fetch_assoc($getppk);
+    $stok = $ppk['stock'] - $jumlah_masuk;
+    mysqli_query($conn, "UPDATE pupuk SET stock='$stok' WHERE id='$pupuk_id'");
+
     $res = mysqli_query($conn, "INSERT INTO barang_masuk VALUES(NULL, '$pupuk_id', '$tanggal_masuk', '$jumlah_masuk')");
 
     if ($res) $response = 'success_add';
@@ -20,7 +25,12 @@ if (isset($_POST['edit_data'])) {
     $pupuk_id = $_POST['pupuk_id'];
     $tanggal_masuk = $_POST['tanggal_masuk'];
     $jumlah_masuk = $_POST['jumlah_masuk'];
+    $jumlah_masuk_old = $_POST['jumlah_masuk_old'];
 
+    $getppk = mysqli_query($conn, "SELECT * FROM pupuk WHERE id='$pupuk_id'");
+    $ppk = mysqli_fetch_assoc($getppk);
+    $stok = ($ppk['stock'] - $jumlah_masuk_old) + $jumlah_masuk;
+    mysqli_query($conn, "UPDATE pupuk SET stock='$stok' WHERE id='$pupuk_id'");
 
     $res = mysqli_query($conn, "UPDATE barang_masuk SET pupuk_id='$pupuk_id', tanggal_masuk='$tanggal_masuk', jumlah_masuk='$jumlah_masuk' WHERE id='$id'");
     if ($res) $response = 'success_edit';
@@ -30,13 +40,22 @@ if (isset($_POST['edit_data'])) {
 // Hapus Data
 if (isset($_GET['hapus_data'])) {
     $id = $_GET['id'];
+    $brg_masuk = mysqli_query($conn, "SELECT * FROM barang_masuk WHERE id='$id'");
+    $brms = mysqli_fetch_assoc($brg_masuk);
+
+    $pupuk_id = $brms['pupuk_id'];
+    $getppk = mysqli_query($conn, "SELECT * FROM pupuk WHERE id='$pupuk_id'");
+    $ppk = mysqli_fetch_assoc($getppk);
+    $stok = $ppk['stock'] - $brms['jumlah_masuk'];
+    mysqli_query($conn, "UPDATE pupuk SET stock='$stok' WHERE id='$pupuk_id'");
+
     $res = mysqli_query($conn, "DELETE FROM barang_masuk WHERE id='$id'");
     if ($res) $response = 'success_delete';
     else $response = 'error';
 }
 
 $get_data = mysqli_query($conn, "SELECT * FROM barang_masuk");
-?> 
+?>
 
 
 <div class="container-fluid">
@@ -64,44 +83,44 @@ $get_data = mysqli_query($conn, "SELECT * FROM barang_masuk");
                     <table id="mainTable" class="table table-striped m-b-0">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th width="10">No</th>
                                 <th>Nama Pupuk</th>
                                 <th>Tanggal Masuk</th>
-                                <th>Jumlah Masuk(Kg/Liter)</th>
+                                <th>Jumlah Masuk (Kg)</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                         <?php 
-                         foreach ($get_data as $no => $dta) {
-                            $pupuk_id = $dta['pupuk_id'];
-                            $pupuk = mysqli_query($conn, "SELECT * FROM pupuk WHERE id='$pupuk_id'");
-                            $ppk = mysqli_fetch_assoc($pupuk)
+                            <?php
+                            foreach ($get_data as $no => $dta) {
+                                $pupuk_id = $dta['pupuk_id'];
+                                $pupuk = mysqli_query($conn, "SELECT * FROM pupuk WHERE id='$pupuk_id'");
+                                $ppk = mysqli_fetch_assoc($pupuk)
                             ?>
-                            <tr>
-                              <td><?= $no+1 ?></td>
-                              <td><?= $ppk['nama_pupuk'] ?></td>
-                              <td><?= $dta['tanggal_masuk'] ?></td>
-                              <td><?= $dta['jumlah_masuk'] ?></td>
+                                <tr>
+                                    <td><?= $no + 1 ?></td>
+                                    <td><?= $ppk['nama_pupuk'] ?></td>
+                                    <td><?= date("d/m/Y", strtotime($dta['tanggal_masuk'])) ?></td>
+                                    <td><?= $dta['jumlah_masuk'] ?> (kg)</td>
 
-                              <td width="180"> 
-                                <button type="button" class="btn btn-success btn-sm btn-rounded waves-light waves-effect" data-toggle="modal" data-target="#modaledit<?= $dta['id'] ?>"><i class="fa fa-edit"></i> Edit</button>
-                                <button type="button" class="btn btn-danger btn-sm btn-rounded waves-light waves-effect" data-toggle="modal" data-target="#modalhapus<?= $dta['id'] ?>"><i class="fa fa-trash" ></i> Hapus</button>
+                                    <td width="180">
+                                        <button type="button" class="btn btn-success btn-sm btn-rounded waves-light waves-effect" data-toggle="modal" data-target="#modaledit<?= $dta['id'] ?>"><i class="fa fa-edit"></i> Edit</button>
+                                        <button type="button" class="btn btn-danger btn-sm btn-rounded waves-light waves-effect" data-toggle="modal" data-target="#modalhapus<?= $dta['id'] ?>"><i class="fa fa-trash"></i> Hapus</button>
 
-                            </td>
-                        </tr>
-                    <?php } ?>  
-                </tbody>
-                <tfoot>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                        <tfoot>
 
-                </tfoot>
-            </table>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- end row -->
 </div>
-</div>
-<!-- end row -->               
-</div> 
 <!-- modal tambah data -->
 <div id="modaltambah" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -125,11 +144,11 @@ $get_data = mysqli_query($conn, "SELECT * FROM barang_masuk");
                     <div class="form-group">
                         <label>Tanggal Masuk</label>
                         <input type="date" name="tanggal_masuk" class="form-control" required="" placeholder="Tanggal Masuk..">
-                    </div> 
+                    </div>
                     <div class="form-group">
-                        <label>Jumlah Masuk(Kg/Liter)</label>
+                        <label>Jumlah Masuk(Kg)</label>
                         <input type="number" name="jumlah_masuk" class="form-control" required="" placeholder="Jumlah Masuk..">
-                    </div>                
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Tutup</button>
@@ -140,74 +159,75 @@ $get_data = mysqli_query($conn, "SELECT * FROM barang_masuk");
     </div><!-- /.modal-dialog -->
 </div>
 
-<?php 
+<?php
 foreach ($get_data as $no => $dta) { ?>
 
-<!-- modal edit data -->
-<div id="modaledit<?= $dta['id'] ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h5 class="modal-title" id="myModalLabel">Edit Data</h5>
-            </div>
-            <form method="POST">
+    <!-- modal edit data -->
+    <div id="modaledit<?= $dta['id'] ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h5 class="modal-title" id="myModalLabel">Edit Data</h5>
+                </div>
+                <form method="POST">
 
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Nama Pupuk</label>
-                        <select name="pupuk_id" id="pupuk_id<?= $dta['id'] ?>"  class="form-control" required="">
-                            <option value="">.::Pilih Pupuk::.</option>
-                            <?php $pupuk = mysqli_query($conn, "SELECT * FROM pupuk");
-                            foreach ($pupuk as $ppk) { ?>
-                                <option value="<?= $ppk['id'] ?>"><?= $ppk['nama_pupuk'] ?></option>
-                            <?php } ?>
-                        </select>
-                        <script>
-                            document.getElementById('pupuk_id<?= $dta['id'] ?>').value="<?= $dta['pupuk_id'] ?>"
-                        </script>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Nama Pupuk</label>
+                            <select name="pupuk_id" id="pupuk_id<?= $dta['id'] ?>" class="form-control" required="">
+                                <option value="">.::Pilih Pupuk::.</option>
+                                <?php $pupuk = mysqli_query($conn, "SELECT * FROM pupuk");
+                                foreach ($pupuk as $ppk) { ?>
+                                    <option value="<?= $ppk['id'] ?>"><?= $ppk['nama_pupuk'] ?></option>
+                                <?php } ?>
+                            </select>
+                            <script>
+                                document.getElementById('pupuk_id<?= $dta['id'] ?>').value = "<?= $dta['pupuk_id'] ?>"
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal Masuk</label>
+                            <input type="date" name="tanggal_masuk" class="form-control" required="" placeholder="Tanggal Masuk.." value="<?= $dta['tanggal_masuk'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>Jumlah Masuk(Kg)</label>
+                            <input type="number" name="jumlah_masuk" class="form-control" required="" placeholder="Jumlah Masuk.." value="<?= $dta['jumlah_masuk'] ?>">
+                            <input type="hidden" name="jumlah_masuk_old" value="<?= $dta['jumlah_masuk'] ?>">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Tanggal Masuk</label>
-                        <input type="date" name="tanggal_masuk" class="form-control" required="" placeholder="Tanggal Masuk.." value="<?= $dta['tanggal_masuk'] ?>">
-                    </div> 
-                    <div class="form-group">
-                        <label>Jumlah Masuk(Kg/Liter)</label>
-                        <input type="number" name="jumlah_masuk" class="form-control" required="" placeholder="Jumlah Masuk.." value="<?= $dta['jumlah_masuk'] ?>">
-                    </div>                
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="id" value="<?= $dta['id'] ?>">
-                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Tutup</button>
-                    <button type="submit" name="edit_data" class="btn btn-success waves-effect waves-light">Simpan</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" value="<?= $dta['id'] ?>">
+                        <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Tutup</button>
+                        <button type="submit" name="edit_data" class="btn btn-success waves-effect waves-light">Simpan</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 
-<!-- modal hapus data -->
-<div id="modalhapus<?= $dta['id'] ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h5 class="modal-title" id="myModalLabel">Hapus Data</h5>
-            </div>
-            <form method="POST">
-                <div class="modal-body">
-                    <p>Yakin Ingin Menghapus Data Ini?</p>
+    <!-- modal hapus data -->
+    <div id="modalhapus<?= $dta['id'] ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h5 class="modal-title" id="myModalLabel">Hapus Data</h5>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Batal</button>
-                    <a href="?hapus_data=true&id=<?= $dta['id'] ?>" role="button" class="btn btn-danger">Hapus</a>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
+                <form method="POST">
+                    <div class="modal-body">
+                        <p>Yakin Ingin Menghapus Data Ini?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Batal</button>
+                        <a href="?hapus_data=true&id=<?= $dta['id'] ?>" role="button" class="btn btn-danger">Hapus</a>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 <?php } ?>
-<?php 
+<?php
 require('template/footer.php');
 ?>
 
@@ -219,7 +239,7 @@ require('template/footer.php');
                 title: 'Berhasil Tambah Data',
                 text: 'Data baru berhasil ditambahkan',
                 preConfirm: () => {
-                    window.location.href=window.location.href;
+                    window.location.href = window.location.href;
                 }
             });
         <?php } else if ($response == 'success_edit') { ?>
@@ -228,7 +248,7 @@ require('template/footer.php');
                 title: 'Berhasil Mengupdate Data',
                 text: 'Data telah berhasil di update',
                 preConfirm: () => {
-                    window.location.href=window.location.href;
+                    window.location.href = window.location.href;
                 }
             });
         <?php } else if ($response == 'success_delete') { ?>
@@ -237,7 +257,7 @@ require('template/footer.php');
                 title: 'Berhasil Menghapus Data',
                 text: 'Data telah berhasil di hapus',
                 preConfirm: () => {
-                    window.location.href=window.location.href.split('?')[0];
+                    window.location.href = window.location.href.split('?')[0];
                 }
             });
         <?php } else if ($response == 'error') { ?>
@@ -246,7 +266,7 @@ require('template/footer.php');
                 title: 'Terjadi Kesalahan',
                 text: 'Terjadi kesalahan. Gagal memproses data',
                 preConfirm: () => {
-                    window.location.href=window.location.href;
+                    window.location.href = window.location.href;
                 }
             });
         <?php } ?>
