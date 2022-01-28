@@ -32,6 +32,7 @@ $get_permintaan = mysqli_query($conn, "SELECT * FROM permintaan");
                         <thead>
                             <tr>
                                 <th width="10">No</th>
+                                <th>Tanggal Keluar</th>
                                 <th>NIK</th>
                                 <th>Nama</th>
                                 <th>Jenis Pupuk</th>
@@ -49,6 +50,7 @@ $get_permintaan = mysqli_query($conn, "SELECT * FROM permintaan");
                                 $jatah = mysqli_query($conn, "SELECT * FROM jatah WHERE petani_id='$petani_id'"); ?>
                                 <tr>
                                     <td><?= $no ?></td>
+                                    <td><?= date('d/m/Y', strtotime($dta['tgl_permintaan'])) ?></td>
                                     <td><?= $ptn['nik'] ?></td>
                                     <td><?= $ptn['nama'] ?></td>
                                     <td>
