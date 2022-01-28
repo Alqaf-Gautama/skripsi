@@ -7,6 +7,15 @@ if (isset($_POST['proses'])) {
     $petani_id = $_POST['petani_id'];
     $tanggal = date('Y-m-d');
 
+    $jatah = mysqli_query($conn, "SELECT * FROM jatah WHERE petani_id='$petani_id'");
+    foreach ($jatah as $jta) {
+        $ppk_id = $jta['pupuk_id'];
+        $getppk = mysqli_query($conn, "SELECT * FROM pupuk WHERE id='$ppk_id'");
+        $ppk = mysqli_fetch_assoc($getppk);
+        $stok = $ppk['stock'] - $jta['jumlah'];
+        mysqli_query($conn, "UPDATE pupuk SET stock='$stok' WHERE id='$ppk_id'");
+    }
+
     $res = mysqli_query($conn, "INSERT INTO permintaan VALUES(NULL, '$tanggal', '$petani_id')");
 
     if ($res) $response = 'success_add';
@@ -124,20 +133,13 @@ require('template/footer.php');
                 success: function(data) {
                     if (data == null) {
                         alert('Petani ini telah mengambil jatah pupuk pada periode ini');
-                        $('.select2').val('');
-                        $('.select2').select2({
-                            placeholder: 'Temukan NIK Petani',
-                        });
-                        $('.dtl').html('--');
-                    }
-
-                    if (data.cek_jatah == 0) {
-                        alert('Jatah pupuk untuk petani ini belum di tentukan');
-                        $('.select2').val('');
-                        $('.select2').select2({
-                            placeholder: 'Temukan NIK Petani',
-                        });
-                        $('.dtl').html('--');
+                        reset_err();
+                    } else if (data.cek_jatah == 0) {
+                        alert('Jatah pupuk untuk petani ini belum di tentukan/diatur');
+                        reset_err();
+                    } else if (data.cek_stok == 1) {
+                        alert('Stok pupuk tidak cukup, silahkan tambah stok pupuk');
+                        reset_err();
                     } else {
                         $.each(data, function(key, val) {
                             $('.' + key).html(val);
@@ -146,6 +148,14 @@ require('template/footer.php');
                 }
             });
         });
+
+        function reset_err() {
+            $('.select2').val('');
+            $('.select2').select2({
+                placeholder: 'Temukan NIK Petani',
+            });
+            $('.dtl').html('--');
+        }
 
         $('.reset-form').click(function(e) {
             e.preventDefault();
