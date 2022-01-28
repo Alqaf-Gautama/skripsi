@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jan 2022 pada 11.03
+-- Waktu pembuatan: 28 Jan 2022 pada 14.45
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.10
 
@@ -85,7 +85,30 @@ INSERT INTO `jatah` (`id`, `petani_id`, `pupuk_id`, `jumlah`) VALUES
 (4, 4, 2, 19),
 (5, 6, 1, 23),
 (8, 7, 2, 12),
-(9, 7, 1, 23);
+(9, 7, 1, 23),
+(11, 36, 2, 350),
+(12, 36, 4, 150),
+(13, 37, 2, 200),
+(14, 37, 4, 100),
+(15, 38, 3, 150),
+(16, 38, 1, 275),
+(17, 38, 2, 150),
+(18, 39, 1, 400),
+(19, 39, 2, 400),
+(20, 40, 2, 400),
+(21, 40, 3, 400),
+(22, 41, 2, 100),
+(23, 41, 1, 150),
+(24, 42, 2, 350),
+(25, 42, 4, 200),
+(26, 43, 1, 350),
+(27, 43, 2, 200),
+(28, 44, 2, 250),
+(29, 44, 4, 200),
+(30, 45, 2, 350),
+(31, 45, 3, 150),
+(32, 46, 2, 300),
+(33, 46, 3, 150);
 
 -- --------------------------------------------------------
 
@@ -105,8 +128,12 @@ CREATE TABLE `kelompok` (
 --
 
 INSERT INTO `kelompok` (`id`, `nama_kelompok`, `jumlah_anggota`, `ket`) VALUES
-(2, 'wanasari', 10, 'aktif'),
-(3, 'tes', 11, 'aktif');
+(2, 'wanasari', 8, 'aktif'),
+(4, 'Bunga Indah', 8, 'aktif'),
+(5, 'Cahaya Pammase', 14, 'aktif'),
+(6, 'Sinar Tabaroge', 10, 'aktif'),
+(7, 'Dongi-Dongi Jaya', 15, 'aktif'),
+(8, 'Makkaritutu', 26, 'aktif');
 
 -- --------------------------------------------------------
 
@@ -119,6 +146,22 @@ CREATE TABLE `permintaan` (
   `tgl_permintaan` date NOT NULL,
   `petani_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `permintaan`
+--
+
+INSERT INTO `permintaan` (`id`, `tgl_permintaan`, `petani_id`) VALUES
+(1, '2022-01-28', 36),
+(2, '2022-01-28', 37),
+(3, '2022-01-28', 38),
+(4, '2022-01-28', 39),
+(5, '2022-01-28', 40),
+(6, '2022-01-28', 42),
+(7, '2022-01-28', 43),
+(8, '2022-01-28', 46),
+(9, '2022-01-28', 44),
+(10, '2022-01-28', 45);
 
 -- --------------------------------------------------------
 
@@ -138,9 +181,40 @@ CREATE TABLE `petani` (
 --
 
 INSERT INTO `petani` (`id`, `kelompok_id`, `nik`, `nama`) VALUES
-(4, 3, '133456', 'alqaf'),
-(6, 3, '64663', 'gau'),
-(7, 2, '12345678912', 'gautama');
+(36, 8, '7324060101870004', 'SAMSUDDIN'),
+(37, 8, '7324064209860001', 'AMALIA EKA YULIANDIRA'),
+(38, 8, '7324060107530019', 'SAHRIR JALLO'),
+(39, 8, '7324060702960001', 'MUH. JAFAR SAHRIR'),
+(40, 8, '7315015605980001', 'IRMAYANTI'),
+(42, 8, '7324055012720001', 'KARTINI'),
+(43, 8, '7324062405650001', 'ABD. HAFID'),
+(44, 8, '7324061302810001', 'ABIDIN AMIR'),
+(45, 8, '7315036812900003', 'RATNAWATI'),
+(46, 8, '7324067112780004', 'NURLINA'),
+(47, 8, '7315034411790001', 'KASMAH'),
+(48, 8, '7324062803880002', 'AKMAL'),
+(49, 8, '7324060107700016', 'NASRUNG'),
+(50, 8, '7324064801600001', 'MASNA'),
+(51, 8, '7324060505810003', 'BAKRI'),
+(52, 8, '7324065012880002', 'NASMA'),
+(53, 8, '7324065912940002', 'SITTI KABIAH'),
+(54, 8, '7324064107840007', 'MARIYANA S'),
+(55, 8, '7324061608800001', 'ABDUL KADIR'),
+(56, 8, '6403053112680006', 'ALIFUDDIN'),
+(57, 8, '6403057012770003', 'DARAWATI'),
+(58, 8, '7324060107850008', 'MUNAWIR'),
+(59, 8, '7315116402890002', 'NURAENI'),
+(60, 8, '7324061004640001', 'MURSON'),
+(61, 8, '7324064107680014', 'BAHARIA'),
+(63, 2, '7324060310720001', 'MUHAMMAD YUNUS'),
+(64, 2, '7324060107450053', 'ANDI MING'),
+(65, 2, '7324060611920001', 'ANDI MASDAR'),
+(66, 2, '7324061001900001', 'ARDILLAH ABU'),
+(67, 2, '7324060204830001', 'ANDI ALI ALATAS'),
+(68, 2, '7324060107450051', 'ANDI YUSRI'),
+(69, 2, '7324064611670002', 'SITTI TANG'),
+(70, 2, '7324063112710029', 'SALAHUDDING'),
+(71, 2, '7324063112650024', 'ABU BAKAR');
 
 -- --------------------------------------------------------
 
@@ -160,12 +234,12 @@ CREATE TABLE `pupuk` (
 --
 
 INSERT INTO `pupuk` (`id`, `nama_pupuk`, `stock`, `harga`) VALUES
-(1, 'NPK', 123, 100),
-(2, 'UREA', 12, 1000),
-(3, 'ZA', 1220, 100),
-(4, 'SP-36', 120, 100),
-(5, 'ORGANIK GRANUL', 123, 100),
-(6, 'ORGANIK CAIR', 123, 100);
+(1, 'NPK', 103450, 115000),
+(2, 'UREA', 40000, 112500),
+(3, 'ZA', 103450, 85000),
+(4, 'SP-36', 30000, 120000),
+(5, 'ORGANIK GRANUL', 15000, 32000),
+(6, 'ORGANIK CAIR', 123, 32000);
 
 --
 -- Indexes for dumped tables
@@ -233,25 +307,25 @@ ALTER TABLE `barang_masuk`
 -- AUTO_INCREMENT untuk tabel `jatah`
 --
 ALTER TABLE `jatah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelompok`
 --
 ALTER TABLE `kelompok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `permintaan`
 --
 ALTER TABLE `permintaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `petani`
 --
 ALTER TABLE `petani`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT untuk tabel `pupuk`
