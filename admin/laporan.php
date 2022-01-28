@@ -58,8 +58,8 @@ $jum_pupuk = mysqli_num_rows($pupuk);
                         <thead>
                             <tr>
                                 <th rowspan="2">No</th>
-                                <th rowspan="2">Nama</th>
                                 <th rowspan="2">NIK</th>
+                                <th rowspan="2">Nama</th>
                                 <th rowspan="2">Tanggal Penebusan</th>
                                 <th colspan="<?= $jum_pupuk ?>" class="text-center">Jenis Pupuk(Kg)</th>
                             </tr>
