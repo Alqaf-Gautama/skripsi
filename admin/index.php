@@ -1,5 +1,16 @@
-<?php 
+<?php
 require('template/header.php');
+$permintaan = mysqli_query($conn, "SELECT * FROM permintaan");
+$cnt_permintaan = mysqli_num_rows($permintaan);
+
+$barang_masuk = mysqli_query($conn, "SELECT * FROM barang_masuk");
+$cnt_barang_masuk = mysqli_num_rows($barang_masuk);
+
+$petani_ = mysqli_query($conn, "SELECT * FROM petani");
+$cnt_petani = mysqli_num_rows($petani_);
+
+$pupuk_ = mysqli_query($conn, "SELECT * FROM pupuk");
+$cnt_pupuk = mysqli_num_rows($pupuk_);
 ?>
 <div class="container-fluid">
 
@@ -10,7 +21,7 @@ require('template/header.php');
 
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                
+
                 </ol>
 
 
@@ -19,46 +30,42 @@ require('template/header.php');
             </div>
         </div>
     </div> <!-- end row -->
- 
-  <div class="row">
-                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                                <div class="card-box tilebox-one">
-                                    <i class="fi-box float-right"></i>
-                                    <h6 class="text-muted text-uppercase mb-3">Permintaan</h6>
-                                    <h4 class="mb-3" data-plugin="counterup">1,587</h4>
-                                    <span class="badge badge-primary"> +11% </span> 
-                                </div>
-                            </div>
 
-                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                                <div class="card-box tilebox-one">
-                                    <i class="fi-layers float-right"></i>
-                                    <h6 class="text-muted text-uppercase mb-3">Barang Keluar</h6>
-                                    <h4 class="mb-3">$<span data-plugin="counterup">46,782</span></h4>
-                                    <span class="badge badge-primary"> -29% </span> 
-                                </div>
-                            </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+            <div class="card-box tilebox-one">
+                <i class="fi-box float-right"></i>
+                <h6 class="text-muted text-uppercase mb-3">Barang Masuk</h6>
+                <h4 class="mb-3"><?= $cnt_barang_masuk ?> Pesanan</h4>
+            </div>
+        </div>
 
-                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                                <div class="card-box tilebox-one">
-                                    <i class="fi-tag float-right"></i>
-                                    <h6 class="text-muted text-uppercase mb-3">Data Petani</h6>
-                                    <h4 class="mb-3">$<span data-plugin="counterup">15.9</span></h4>
-                                    <span class="badge badge-primary"> 0% </span> 
-                                </div>
-                            </div>
+        <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+            <div class="card-box tilebox-one">
+                <i class="fi-layers float-right"></i>
+                <h6 class="text-muted text-uppercase mb-3">Total Permintaan</h6>
+                <h4 class="mb-3"><?= $cnt_permintaan ?> Permintaan</h4>
+            </div>
+        </div>
 
-                            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                                <div class="card-box tilebox-one">
-                                    <i class="fi-briefcase float-right"></i>
-                                    <h6 class="text-muted text-uppercase mb-3">Data Pupuk</h6>
-                                    <h4 class="mb-3" data-plugin="counterup">1,890</h4>
-                                    <span class="badge badge-primary"> +89% </span> 
-                                </div>
-                            </div>
-                        </div>
+        <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+            <div class="card-box tilebox-one">
+                <i class="fi-tag float-right"></i>
+                <h6 class="text-muted text-uppercase mb-3">Data Petani</h6>
+                <h4 class="mb-3"><?= $cnt_petani ?> Orang</h4>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+            <div class="card-box tilebox-one">
+                <i class="fi-briefcase float-right"></i>
+                <h6 class="text-muted text-uppercase mb-3">Data Pupuk</h6>
+                <h4 class="mb-3"><?= $cnt_pupuk ?> Jenis</h4>
+            </div>
+        </div>
+    </div>
 
 </div>
-<?php 
+<?php
 require('template/footer.php');
 ?>
