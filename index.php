@@ -172,8 +172,8 @@ $get_kelompok = mysqli_query($conn, "SELECT * FROM kelompok");
                         <tr>
                           <td><?= $no + 1 ?></td>
                           <td><?= $dta['nama_pupuk'] ?></td>
-                          <td><?= $dta['stock'] ?></td>
-                          <td><?= $dta['harga'] ?></td>
+                          <td><?= $dta['stock'] ?> (kg)</td>
+                          <td>Rp.<?= number_format($dta['harga']) ?>/kg</td>
                         </tr>
                       <?php } ?>
                     </tbody>
