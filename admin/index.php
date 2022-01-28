@@ -34,7 +34,7 @@ $cnt_pupuk = mysqli_num_rows($pupuk_);
     <div class="row">
         <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
             <div class="card-box tilebox-one">
-                <i class="fi-box float-right"></i>
+                <i class="fi-download float-right"></i>
                 <h6 class="text-muted text-uppercase mb-3">Barang Masuk</h6>
                 <h4 class="mb-3"><?= $cnt_barang_masuk ?> Pesanan</h4>
             </div>
@@ -42,15 +42,15 @@ $cnt_pupuk = mysqli_num_rows($pupuk_);
 
         <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
             <div class="card-box tilebox-one">
-                <i class="fi-layers float-right"></i>
-                <h6 class="text-muted text-uppercase mb-3">Total Permintaan</h6>
-                <h4 class="mb-3"><?= $cnt_permintaan ?> Permintaan</h4>
+                <i class="fi-upload float-right"></i>
+                <h6 class="text-muted text-uppercase mb-3">Barang Keluar</h6>
+                <h4 class="mb-3"><?= $cnt_permintaan ?> Penebusan</h4>
             </div>
         </div>
 
         <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
             <div class="card-box tilebox-one">
-                <i class="fi-tag float-right"></i>
+                <i class="fi-head float-right"></i>
                 <h6 class="text-muted text-uppercase mb-3">Data Petani</h6>
                 <h4 class="mb-3"><?= $cnt_petani ?> Orang</h4>
             </div>
@@ -58,7 +58,7 @@ $cnt_pupuk = mysqli_num_rows($pupuk_);
 
         <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
             <div class="card-box tilebox-one">
-                <i class="fi-briefcase float-right"></i>
+                <i class="fi-box float-right"></i>
                 <h6 class="text-muted text-uppercase mb-3">Data Pupuk</h6>
                 <h4 class="mb-3"><?= $cnt_pupuk ?> Jenis</h4>
             </div>
