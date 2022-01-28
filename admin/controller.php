@@ -77,7 +77,7 @@ if (isset($_POST['req'])) {
                 $pupuk_id = $jta['pupuk_id'];
                 $pupuk = mysqli_query($conn, "SELECT * FROM pupuk WHERE id='$pupuk_id'");
                 $ppk = mysqli_fetch_assoc($pupuk);
-                $jatah .= '- ' . $ppk['nama_pupuk'] . ' (' . $jta['jumlah'] . 'Kg/Liter)<br>';
+                $jatah .= '- ' . $ppk['nama_pupuk'] . ' (' . $jta['jumlah'] . 'Kg)<br>';
 
                 $harga = $harga + ($ppk['harga'] * $jta['jumlah']);
             }
