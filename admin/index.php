@@ -17,7 +17,7 @@ $cnt_pupuk = mysqli_num_rows($pupuk_);
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title float-left">Dashboard</h4>
+                <h4 class="page-title float-left" >Dashboard</h4>
 
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
