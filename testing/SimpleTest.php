@@ -1,12 +1,25 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-require_once "LoginProccess.php";
+require('../config.php');
 require_once "CekPetani.php";
+require_once "CekPeriode.php";
+require_once "LoginProccess.php";
 
 class SimpleTest extends TestCase
 {
-    public function testLogin()
+    
+    public function test_cek_status_jika_terdaftar()
+    {
+        $cek = new CekPetani();
+
+        $nik = "7324060101870004";
+        $status = $cek->cek_status($nik);
+
+        $this->assertEquals('Terdaftar', $status); 
+    }
+
+    public function test_jika_kridensial_benar()
     {
         $lg = new LoginProccess();
 
@@ -15,15 +28,30 @@ class SimpleTest extends TestCase
         $login = $lg->login($username, $password);
 
         $this->assertEquals(true, $login); 
-    }
 
-    public function cekStatus()
+    }
+    
+    public function test_jika_kridensial_salah()
     {
-        $cek = new CekPetani();
+        $lg = new LoginProccess();
 
-        $nik = "7315034411790001";
-        $status = $cek->cek_status($nik);
+        $username = "admin";
+        $password = "wrong";
+        $login = $lg->login($username, $password);
 
-        $this->assertEquals('Terdaftar', $status); 
+        $this->assertEquals(false, $login); 
+
     }
+
+    public function test_penebusan_pupuk_dalam_satu_periode()
+    {
+        $tes = new CekPeriode();
+
+        $tanggal_ambil = "2021-11-15";
+        $cek = $tes->cek_periode($tanggal_ambil);
+
+        $this->assertEquals(false, $cek); 
+
+    }
+
 }

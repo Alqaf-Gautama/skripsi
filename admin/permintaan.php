@@ -44,7 +44,7 @@ if (isset($_POST['proses'])) {
     </div> <!-- end row -->
     <div class="row">
         <div class="col-sm-12">
-            <div class="card-box">
+            <div class="card-box" >
                 <div class="row justify-content-center">
                     <div class="col-md-6 pt-2">
                         <h2 class="text-center m-t-0"><b>Permintaan</b></h2>

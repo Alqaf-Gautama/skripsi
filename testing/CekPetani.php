@@ -1,5 +1,4 @@
 <?php
-require('../config.php');
 
 class CekPetani
 {
@@ -7,10 +6,10 @@ class CekPetani
     {
         global $conn;
   
-        $petani = mysqli_query($conn, "SELECT * FROM petani WHERE nik='$nik'");
+        $petani = mysqli_query($conn, "SELECT * FROM petani WHERE nik = '$nik'");
         $ptn = mysqli_fetch_assoc($petani);
 
-        if ($ptn) $status = 'Terdaftar';
+        if ($ptn['id']) $status = 'Terdaftar';
         else $status = 'Tidak Terdaftar';
 
         return $status;

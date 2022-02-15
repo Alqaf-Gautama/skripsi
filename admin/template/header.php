@@ -54,9 +54,9 @@ $adm = mysqli_fetch_assoc($admin);
                         <span>
                            <h4 class="mt-3">Admin Page</h4>
                         </span>
-                        <i>
+                        <!-- <i>
                             <img src="assets/images/logo_sm.png" alt="" height="28">
-                        </i>
+                        </i> -->
                     </a>
                 </div>
 

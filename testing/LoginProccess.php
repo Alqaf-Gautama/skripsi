@@ -1,5 +1,4 @@
 <?php
-require('../config.php');
 
 class LoginProccess
 {
@@ -10,7 +9,7 @@ class LoginProccess
         $result = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$username'");
         $get = mysqli_fetch_assoc($result);
     
-        if ($get) {
+        if ($get['id']) {
             $get_password = $get['password'];
     
             if (password_verify($password, $get_password)) {
