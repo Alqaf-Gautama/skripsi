@@ -31,11 +31,12 @@ $jum_pupuk = mysqli_num_rows($pupuk);
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title float-left">Laporan</h4>
+                <h4 class="page-title float-left">Laporan Penebusan</h4>
 
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Laporan</li>
+                    <li class="breadcrumb-item">Laporan</li>
+                    <li class="breadcrumb-item active">Laporan Penebusan</li>
                 </ol>
                 <div class="clearfix"></div>
             </div>
@@ -44,7 +45,7 @@ $jum_pupuk = mysqli_num_rows($pupuk);
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
-                <h4 class="m-t-0 header-title"><b>Laporan</b></h4>
+                <h4 class="m-t-0 header-title"><b>Laporan Penebusan</b></h4>
                 <hr>
                 <div class="row">
                     <div class="col-3">

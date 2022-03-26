@@ -131,10 +131,13 @@ $adm = mysqli_fetch_assoc($admin);
                                      <li><a href="data_kelompok.php">Data Kelompok</a></li>
                                 </ul>
                             </li>
-                           
-                             
+
                             <li>
-                                <a href="laporan.php"><i class="mdi mdi-file-document-box"></i><span> Laporan </span></a>
+                                <a href="javascript: void(0);"><i class="mdi mdi-file-document-box"></i> <span> Laporan </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="laporan_stok.php">Laporan Stok</a></li>
+                                    <li><a href="laporan.php">Laporan Penebusan</a></li>
+                                </ul>
                             </li>                   
                         </ul>
 
