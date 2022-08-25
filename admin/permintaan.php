@@ -10,10 +10,13 @@ if (isset($_POST['proses'])) {
     $jatah = mysqli_query($conn, "SELECT * FROM jatah WHERE petani_id='$petani_id'");
     foreach ($jatah as $jta) {
         $ppk_id = $jta['pupuk_id'];
+        $jmlh_kel = $jta['jumlah'];
         $getppk = mysqli_query($conn, "SELECT * FROM pupuk WHERE id='$ppk_id'");
         $ppk = mysqli_fetch_assoc($getppk);
         $stok = $ppk['stock'] - $jta['jumlah'];
-        mysqli_query($conn, "UPDATE pupuk SET stock='$stok' WHERE id='$ppk_id'");
+        $stok_fix = $stok > 0 ? $stok : 0;
+        mysqli_query($conn, "INSERT INTO riwayat_stok VALUES(NULL, '$ppk_id', '$tanggal', '$jmlh_kel', 'keluar')");
+        mysqli_query($conn, "UPDATE pupuk SET stock='$stok_fix' WHERE id='$ppk_id'");
     }
 
     $res = mysqli_query($conn, "INSERT INTO permintaan VALUES(NULL, '$tanggal', '$petani_id')");

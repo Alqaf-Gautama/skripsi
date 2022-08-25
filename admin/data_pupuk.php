@@ -109,10 +109,7 @@ $get_data = mysqli_query($conn, "SELECT * FROM pupuk");
                         <label>Nama Pupuk</label>
                         <input type="text" name="nama_pupuk" class="form-control" required="" placeholder="Nama Pupuk..">
                     </div>
-                    <div class="form-group">
-                        <label>Stock</label>
-                        <input type="number" name="stock" class="form-control" required="" placeholder="Stock..">
-                    </div>
+                    <input type="hidden" name="stock" value="0" class="form-control" required="" placeholder="Stock..">
 
                     <div class="form-group">
                         <label>Harga (Rp)</label>
@@ -145,7 +142,7 @@ $get_data = mysqli_query($conn, "SELECT * FROM pupuk");
                         </div>
                         <div class="form-group">
                             <label>Stock</label>
-                            <input type="number" name="stock" class="form-control" required="" placeholder="Stock.." value="<?= $dta['stock'] ?>">
+                            <input type="number" name="stock" readonly class="form-control" required="" placeholder="Stock.." value="<?= $dta['stock'] ?>">
                         </div>
 
                         <div class="form-group">

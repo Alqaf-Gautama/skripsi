@@ -10,10 +10,11 @@ if (isset($_POST['tambah_data'])) {
 
     $getppk = mysqli_query($conn, "SELECT * FROM pupuk WHERE id='$pupuk_id'");
     $ppk = mysqli_fetch_assoc($getppk);
-    $stok = $ppk['stock'] - $jumlah_masuk;
+    $stok = $ppk['stock'] + $jumlah_masuk;
     mysqli_query($conn, "UPDATE pupuk SET stock='$stok' WHERE id='$pupuk_id'");
 
     $res = mysqli_query($conn, "INSERT INTO barang_masuk VALUES(NULL, '$pupuk_id', '$tanggal_masuk', '$jumlah_masuk')");
+    mysqli_query($conn, "INSERT INTO riwayat_stok VALUES(NULL, '$pupuk_id', '$tanggal_masuk', '$jumlah_masuk', 'masuk')");
 
     if ($res) $response = 'success_add';
     else $response = 'error';
@@ -47,7 +48,8 @@ if (isset($_GET['hapus_data'])) {
     $getppk = mysqli_query($conn, "SELECT * FROM pupuk WHERE id='$pupuk_id'");
     $ppk = mysqli_fetch_assoc($getppk);
     $stok = $ppk['stock'] - $brms['jumlah_masuk'];
-    mysqli_query($conn, "UPDATE pupuk SET stock='$stok' WHERE id='$pupuk_id'");
+    $stok_fix = $stok > 0 ? $stok : 0;
+    mysqli_query($conn, "UPDATE pupuk SET stock='$stok_fix' WHERE id='$pupuk_id'");
 
     $res = mysqli_query($conn, "DELETE FROM barang_masuk WHERE id='$id'");
     if ($res) $response = 'success_delete';
@@ -143,7 +145,7 @@ $get_data = mysqli_query($conn, "SELECT * FROM barang_masuk");
                     </div>
                     <div class="form-group">
                         <label>Tanggal Masuk</label>
-                        <input type="date" name="tanggal_masuk" class="form-control" required="" placeholder="Tanggal Masuk..">
+                        <input type="date" readonly name="tanggal_masuk" class="form-control" required="" placeholder="Tanggal Masuk.." value="<?= date('Y-m-d') ?>">
                     </div>
                     <div class="form-group">
                         <label>Jumlah Masuk(Kg)</label>
@@ -188,7 +190,7 @@ foreach ($get_data as $no => $dta) { ?>
                         </div>
                         <div class="form-group">
                             <label>Tanggal Masuk</label>
-                            <input type="date" name="tanggal_masuk" class="form-control" required="" placeholder="Tanggal Masuk.." value="<?= $dta['tanggal_masuk'] ?>">
+                            <input type="date" name="tanggal_masuk" readonly class="form-control" required="" placeholder="Tanggal Masuk.." value="<?= $dta['tanggal_masuk'] ?>">
                         </div>
                         <div class="form-group">
                             <label>Jumlah Masuk(Kg)</label>
