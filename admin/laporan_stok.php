@@ -130,13 +130,13 @@ $get_data = mysqli_query($conn, "SELECT * FROM pupuk");
                                 </tr>
                             <?php } ?>
                         </tbody>
-                        <tfoot>
+                        <!-- <tfoot>
                             <tr>
                                 <th colspan="3" class="text-center">Total Keseluruhan</th>
                                 <th><?= $total ?> (kg)</th>
                                 <th><?= $total ?> (kg)</th>
                             </tr>
-                        </tfoot>
+                        </tfoot> -->
                     </table>
                 </div>
             </div>
